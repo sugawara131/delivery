@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+    <title>お薬の無料配送のお申込み</title>
+    <style>
+        .required::after {
+            content: "必須";
+            background-color: #d9534f;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 10px;
+            padding: 3px 7px;
+            margin: 0px 5px;
+            line-height: 1;
+            vertical-align: middle;
+            white-space: nowrap;
+            text-align: center;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .nonrequired::after {
+            content: "任意";
+            background-color: #78909C;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 10px;
+            padding: 3px 7px;
+            margin: 0px 5px;
+            line-height: 1;
+            vertical-align: middle;
+            white-space: nowrap;
+            text-align: center;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .sub{
+            font-size : 14px;
+        
+        }
+        .error-message{
+            color: #d9534f;
+            font-size:15px;
+        
+        }
+    </style>
+  </head>
+  <body>
+    
+    <form class="h-adr" enctype="multipart/form-data" method="POST" action="mailto:t.sugawara131@gmail.com">
+        <div>
+            <div class="container" id="dm-form-page">
+                <div class="row justify-content-center" name="title">
+                    <h2>お薬の無料配送のお申込み</h>
+                </div>
+                <div class="form-group" name="name">
+                    <div class="col-12">
+                        <label class="required">名前</label>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                姓
+                                <div class="w-100"></div>
+                                <input type="text" class="form-control" placeholder="山田" required></input>
+                            </div>
+                            <div class="col-6">
+                                名
+                                <div class="w-100"></div>
+                                <input type="text" class="form-control" placeholder="太郎" required></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" name="adress">
+                    <label class="required">住所</label>
+                    <span class="p-country-name" style="display:none;">Japan</span>
+                    <div class="row">
+                        <div class="col-6">
+                            郵便番号:<input type="text" class="p-postal-code form-control"><br>
+                        </div>
+                        <div class="col-6">
+                            都道府県:<input type="text" class="p-region form-control" readonly><br>
+                        </div>
+                        <div class="col-12">
+                            市区町村:<input type="text" class="p-locality form-control" readonly><br>
+                        </div>
+                        <div class="col-12">
+                            以降の住所<input type="text" class="p-street-address form-control"><br>
+                        </div>
+                        <div class="col-12">
+                            ビル・マンション等<input type="text" class="p-extended-address form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" name="phone-number">
+                    <div class="col-12">
+                        <label class="required">電話番号</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="phone-number" maxlength="20" minlength="6" placeholder="09012345678" onkeyup="ShowLength(value)" required>
+                    </div>
+                    <div class="col-12 text-range-explanation">
+                        <div class="row justify-content-between">
+                            <div class="col-6">
+                                <span>
+                                    <small>文字数 20文字以内</small>
+                                </span>
+                            </div>
+                            <div class="col-auto">
+                                <span>
+                                <small>現在の文字数 </small><small id="inputlength">0文字</small>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-12" id="show-if-phone-number-error">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" name="mail-adress">
+                    <div class="col-12">
+                        <label class="nonrequired">メールアドレス</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="email" class="form-control" placeholder="example@mail.com" required>
+                    </div>
+                    <div class="col-12">
+                        <label>確認のためもう一度入力してください</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="email" class="form-control" placeholder="example@mail.com" required>
+                    </div>
+                </div>
+                <div class="form-group" name="prescription">
+                    <label class="required">処方箋の写真を撮り、こちらにUPしてください</label>
+                    <input type="file" class="form-control" name="prescription" accept="image/*">  
+                </div>
+                <div class="form-group" name="haisoukiboubi">
+                    <div class="col-12">
+                        <label>お薬の配送希望日</label>
+                    </div>
+                    <div class="col-12">
+                        <label class="required sub">第一希望日時</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="datetime-local" class="form-control" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="nonrequired sub">第二希望日時</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group" name="hukuyakusidoukiboubi">
+                    <div class="col-12">
+                        <label>服薬指導希望日</label>
+                    </div>
+                    <div class="col-12">
+                        <label class="required sub">第一希望日時</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="datetime-local" class="form-control" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="nonrequired sub">第二希望日時</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group" name="siharaihouhou">
+                    <div class="col-12">
+                        <label class="required">お支払方法</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <input type="radio" class="form-control" id="paymentchoice1" name="payment" value="cash">
+                        </div>
+                        <div class="col-11">
+                            <label for="paymentchoice1">現金（配送時に会計）</label>
+                        </div>
+                    </div>
+                    <div class="row">    
+                        <div class="col-1">
+                            <input type="radio" class="form-control" id="paymentchoice2" name="payment" value="card">
+                        </div>
+                        <div class="col-11">
+                            <label for="paymentchoice2">クレジット・電子マネー（配送時に会計）</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <input type="radio" class="form-control" id="paymentchoice3" name="payment" value="online">
+                        </div>
+                        <div class="col-11">
+                            <label for="paymentchoice3">オンライン決済（クレジットカード：メールアドレス入力必須）</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" name="generic">
+                    <div class="col-12">
+                        <label class="required">ジェネリックの希望</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <input type="radio" class="form-control" id="genericchoice1" name="generic" value="generic">
+                        </div>
+                        <div class="col-11">
+                            <label for="genericchoice1">希望する</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <input type="radio" class="form-control" id="genericchoice2" name="generic" value="branded">
+                        </div>
+                        <div class="col-11">
+                            <label for="genericchoice2">希望しない</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <input type="radio" class="form-control" id="genericchoice3" name="generic" value="whichever">
+                        </div>
+                        <div class="col-11">
+                            <label for="genericchoice3">どちらでも良い</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" name="heiyouyaku">
+                    <div class="col-12">
+                        <label>使用しているお薬はありますか？</label>
+                    </div>
+                    <div class="col-12">
+                        <label class="nonrequired">使用しているお薬を下記に入力してください
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control" cols="60" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="form-group" name="bikou">
+                    <label>ご質問、ご要望</label>
+                    <div class="col-12">
+                        <label class="nonrequired">ご質問、ご要望がございましたら下記に入力してください。
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control" cols="60" rows="10"></textarea>
+                    </div>
+                </div>
+                <input type="submit" value="  送信  ">
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function ShowLength(str) {
+            document.getElementById("inputlength").innerHTML = str.length + "文字";
+            if(str.length < 7){
+                document.getElementById("show-if-phone-number-error").innerHTML ="<p class=" + "error-message" + ">入力してください</p>";
+            }else{
+                $("#show-if-phone-number-error .error-message").remove();
+            }
+        }
+        $(function(){
+            $("#phone-number").change(function(){
+                alert("test");
+                var val = $(this).val();
+            });
+        });
+        function OnlyNumbers(str){
+            return str.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/[ー−]/g,'-').replace(/[^\-\d]/g,'');
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
